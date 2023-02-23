@@ -1,14 +1,19 @@
+#https://leetcode.com/problems/count-primes/
+#https://python.plainenglish.io/count-primes-day-78-python-7c37eb7c2c07
+
+def checkPrime(n):
+    prime = True
+    for i in range(2,n):
+        if n%i ==0:
+            prime = False
+    return prime
+
 def countPrimes(n: int) -> int:
-        if n < 2:
-            return 0
-        primes = [True]*n 
-        primes[0] = False
-        primes[1] = False
+    count = 0
+    for i in range(2,n):
+        if checkPrime(i):
+            count = count +1
+    return count
 
-        for i in range(2,n):
-            if primes[i]:
-                for j in range(i+i,n,i):
-                    primes[j] = False
-        return primes.count(True)
-
-print(countPrimes(10))
+n = 10
+print(countPrimes(n))
